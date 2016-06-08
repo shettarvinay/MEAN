@@ -1,0 +1,25 @@
+<script src="/javascripts/jquery.min.js">
+
+</script>
+
+<link rel="stylesheet" href="/stylesheets/bootstrap.min.css"/>
+<script src="/javascripts/bootstrap.min.js"></script>
+
+<h1>Listing blogs:</h1>
+
+<div class="col-md-2" style="height:500px:overflow:auto;">
+<ol>
+<%for(i=0;i<blogs.length;i++){%>
+<li  onclick="$('#display_blog').html($('#<%=blogs[i]._id%>').html());" style="cursor:pointer;">
+<%=blogs[i].name%>
+<div id="<%=blogs[i]._id%>" style="display:none;">
+<%=blogs[i].description%>
+</div>
+</li>
+<%}%>
+</ol>
+</div>
+
+<div id="display_blog" class="col-md-10" style="height:300px;word-wrap:break-word;height:500px;overflow:auto;">
+
+</div>
