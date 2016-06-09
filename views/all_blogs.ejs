@@ -2,6 +2,45 @@
 
 </script>
 
+<script type="text/javascript">
+	
+function edit_blog() {
+	var id = $("#h_blog").val();
+	$.ajax({
+		url : "/blogs/edit/"+id,
+		method : "put"
+	}).done(function(data){
+		$("#display_section").html(data);
+
+	});
+
+}
+
+function replace_update(){
+	$("#edit_blog").remove();
+	$("#blog_action").prepend("<a href='javascript:void(0);' onclick='edit_blog();' id='edit_blog'>Edit</a>")
+}
+
+function Update_blog(){
+	var _id = $("#h_blog").val();
+	var _desc = $("#blog_desc").val();
+
+	$.ajax({
+		url : '/blogs/Update_blog',
+		method : 'post',
+		data : {
+			_id : _id,
+			desc : _desc
+		}
+	}).done(function(data){
+		$("#display_section").html(data);
+	});
+
+}
+
+</script>
+
+
 <link rel="stylesheet" href="/stylesheets/bootstrap.min.css"/>
 <script src="/javascripts/bootstrap.min.js"></script>
 
@@ -12,8 +51,8 @@
 <div class="col-md-2" style="height:500px:overflow:auto;">
 <ol>
 <%for(i=0;i<blogs.length;i++){%>
-<li  onclick="$('#display_blog').html($('#<%=blogs[i]._id%>').html());" style="cursor:pointer;">
-<%=blogs[i].name%>
+<li  onclick="$('#display_blog').html($('#<%=blogs[i]._id%>').html());$('#blog_action').show();$('#h_blog').val('<%=blogs[i]._id%>');replace_update();" style="cursor:pointer;">
+<a href="javascript:void(0);" title="Click to view blog."><%=blogs[i].name%></a>
 <div id="<%=blogs[i]._id%>" style="display:none;">
 <%=blogs[i].description%>
 </div>
@@ -22,6 +61,15 @@
 </ol>
 </div>
 
-<div id="display_blog" class="col-md-10" style="height:300px;word-wrap:break-word;height:500px;overflow:auto;">
+<div class="col-md-10" style="height:500px;" id="display_section">
+
+	<div id="display_blog" class="col-md-12" style="word-wrap:break-word;height:450px;overflow:auto;">
+
+	</div>
+	<div class="col-md-12" id="blog_action" style="display:none;">
+		<input type="hidden" value="" id="h_blog"></input>
+		<a href="javascript:void(0);" onclick="edit_blog();" id="edit_blog">Edit</a>
+		<a href="javascript:void(0);" onclick="$('#blog_action').hide();$('#display_blog').empty();$('#h_blog').val('');">Close</a>
+	</div>
 
 </div>
