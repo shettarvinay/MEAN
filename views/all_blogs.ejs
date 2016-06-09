@@ -1,8 +1,18 @@
-<script src="/javascripts/jquery.min.js">
+<link rel="stylesheet" href="/stylesheets/bootstrap.min.css"/>
 
-</script>
+<script src="/javascripts/jquery.min.js"></script>
 
 <script type="text/javascript">
+
+$(document).ready(function(){
+	$("#blogs_list ol").children()[0].click();
+})
+
+function display_first_blog(id){
+	// alert("HI")
+	// var first_child=$("#blogs_list ol").children()[0];
+	$('#'+id).click();
+}
 	
 function edit_blog() {
 	var id = $("#h_blog").val();
@@ -18,7 +28,7 @@ function edit_blog() {
 
 function replace_update(){
 	$("#edit_blog").remove();
-	$("#blog_action").prepend("<a href='javascript:void(0);' onclick='edit_blog();' id='edit_blog'>Edit</a>")
+	$("#blog_action").prepend("<a href='javascript:void(0);' onclick='edit_blog();' id='edit_blog' class='btn btn-primary'>Edit</a>")
 }
 
 function Update_blog(){
@@ -34,42 +44,75 @@ function Update_blog(){
 		}
 	}).done(function(data){
 		$("#display_section").html(data);
+		var _id=$("#h_blog").val();
+		$("#"+_id).html($('#display_blog').html());
 	});
 
 }
 
 </script>
-
-
-<link rel="stylesheet" href="/stylesheets/bootstrap.min.css"/>
 <script src="/javascripts/bootstrap.min.js"></script>
 
-<h1>Listing blogs:</h1>
-<a href="/blogs/new_blog">New Blog</a>
+<style>
+.opa{
+	opacity: .75;
+}
+</style>
 
+<div class="container-fluid" style="background-color:#cecece;background-image:url(/images/sky.jpg);background-repeat:no-repeat;" >
 
-<div class="col-md-2" style="height:500px:overflow:auto;">
-<ol>
-<%for(i=0;i<blogs.length;i++){%>
-<li  onclick="$('#display_blog').html($('#<%=blogs[i]._id%>').html());$('#blog_action').show();$('#h_blog').val('<%=blogs[i]._id%>');replace_update();" style="cursor:pointer;">
-<a href="javascript:void(0);" title="Click to view blog."><%=blogs[i].name%></a>
-<div id="<%=blogs[i]._id%>" style="display:none;">
-<%=blogs[i].description%>
-</div>
-</li>
-<%}%>
-</ol>
-</div>
-
-<div class="col-md-10" style="height:500px;" id="display_section">
-
-	<div id="display_blog" class="col-md-12" style="word-wrap:break-word;height:450px;overflow:auto;">
-
-	</div>
-	<div class="col-md-12" id="blog_action" style="display:none;">
-		<input type="hidden" value="" id="h_blog"></input>
-		<a href="javascript:void(0);" onclick="edit_blog();" id="edit_blog">Edit</a>
-		<a href="javascript:void(0);" onclick="$('#blog_action').hide();$('#display_blog').empty();$('#h_blog').val('');">Close</a>
+	<div class="col-md-12 opa" style="height:30px;background-color:#e3e3e3;top:5px;">
 	</div>
 
+	<div class="col-md-12 opa" style="height:80px;background-color:#f4f4f4;top:15px;">
+		<div class="col-md-1" style="height:50px;top:20px;">
+			<a href="/blogs/new_blog" class="btn btn-info">New Blog</a>
+		</div>
+		<div class="col-md-9 col-md-offset-2" style="height:60px;top:10px;">
+			<h2><em  id="header"></em></h2>
+		</div>
+	</div>
+
+	<div class="col-md-12 opa" style="height:30px;">
+	</div>
+
+	<div class="col-md-12 " style="height:430px;">
+
+		<div class="col-md-3 list-group opa" style="height:400px;top:15px;overflow:auto;background-color:#eff7f4;" id="blogs_list">
+			<ol>
+			<%for(i=0;i<blogs.length;i++){%>
+			<li id="link_<%=blogs[i]._id%>" onclick="$('#display_blog').html($('#<%=blogs[i]._id%>').html());$('#blog_action').show();$('#h_blog').val('<%=blogs[i]._id%>');replace_update();$('#header').html('<%=blogs[i].name%>')" style="cursor:pointer;">
+			<a href="javascript:void(0);" title="Click to view blog." class="list-group-item"><%=blogs[i].name%></a>
+			<div id="<%=blogs[i]._id%>" style="display:none;">
+			<%=blogs[i].description%>
+			</div>
+			</li>
+			<%}%>
+			</ol>
+		</div>
+
+		<div class="col-md-9" style="height:440px;top:15px;" id="display_section">
+
+			<div id="display_blog" class="col-md-12" style="word-wrap:break-word;height:400px;overflow:auto;background-color:#eff7f4;">
+
+			</div>
+			<div class="col-md-6 col-md-offset-4" id="blog_action" style="display:none;">
+				<input type="hidden" value="" id="h_blog"></input>
+				<a href="javascript:void(0);" onclick="edit_blog();" id="edit_blog" class="btn btn-primary">Edit</a>
+				<!-- <a href="javascript:void(0);" onclick="$('#blog_action').hide();$('#display_blog').empty();$('#h_blog').val('');display_first_blog();" class="btn btn-warning">Close</a> -->
+			</div>
+
+		</div>
+
+
+	</div>
+
+	<div class="col-md-12 opa" style="height:50px;top:20px;background-color:#eff7f4;">
+	</div>
+
 </div>
+
+
+
+
+

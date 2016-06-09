@@ -37,6 +37,14 @@ router.get('/list_all_blogs',function(req,res){
 	})
 })
 
+router.get('/',function(req,res){
+	Blog.find({},function(err,docs){
+		res.render('all_blogs',{
+			blogs : docs
+		})
+	})
+})
+
 router.put('/edit/:_id',function(req,res){
 	console.log("This is id sent")
 	console.log(req.params._id);

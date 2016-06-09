@@ -1,14 +1,14 @@
 
 
-<div id="display_blog" class="col-md-12" style="word-wrap:break-word;height:450px;overflow:auto;">
-			<textarea name="blog_description" rows="20" cols="120" id="blog_desc">
+<div id="display_blog" class="col-md-12" style="word-wrap:break-word;height:400px;overflow:auto;background-color:#eff7f4;">
+			<textarea name="blog_description" rows="20" cols="90" id="blog_desc"  class="form-control">
 		<%=blog[0].description%>
 		</textarea>
 </div>
 
-<div class="col-md-12" id="blog_action">
+<div class="col-md-6 col-md-offset-4" id="blog_action">
 	<input type="hidden" value="<%=blog[0]._id%>" id="h_blog"></input>
-	<a href="javascript:void(0);" onclick="Update_blog();" id="edit_blog">Update</a>
-	<a href="javascript:void(0);" onclick="$('#blog_action').hide();$('#display_blog').empty();$('#h_blog').val('');">Close</a>
+	<a href="javascript:void(0);" onclick="Update_blog();" id="edit_blog"  class="btn btn-success">Update</a>
+	<a href="javascript:void(0);" onclick="$('#blog_action').hide();$('#display_blog').empty();$('#h_blog').val('');display_first_blog('link_<%=blog[0]._id%>');$(this).remove();" class="btn btn-warning">Cancel</a>
 
 </div>
