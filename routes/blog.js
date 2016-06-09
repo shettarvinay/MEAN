@@ -29,6 +29,11 @@ router.get('/new_blog',function(req,res){
 	res.render('blog_new');
 });
 
+router.get('/blue_print',function(req,res){
+
+	res.render('blog_listing_layout');
+});
+
 router.get('/list_all_blogs',function(req,res){
 	Blog.find({},function(err,docs){
 		res.render('all_blogs',{

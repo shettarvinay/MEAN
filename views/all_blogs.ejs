@@ -30,7 +30,7 @@ function edit_blog() {
 
 function replace_update(){
 	$("#edit_blog").remove();
-	$("#blog_action").prepend("<a href='javascript:void(0);' onclick='edit_blog();' id='edit_blog' class='btn btn-primary'>Edit</a>")
+	$("#blog_action").prepend("<a href='javascript:void(0);' onclick='edit_blog();' id='edit_blog' class='btn btn-primary btn-lg'>Edit</a>")
 }
 
 function Update_blog(){
@@ -100,7 +100,7 @@ function Update_blog(){
 			</div>
 			<div class="col-md-6 col-md-offset-4" id="blog_action" style="display:none;">
 				<input type="hidden" value="" id="h_blog"></input>
-				<a href="javascript:void(0);" onclick="edit_blog();" id="edit_blog" class="btn btn-primary">Edit</a>
+				<a href="javascript:void(0);" onclick="edit_blog();" id="edit_blog" class="btn btn-primary btn-lg">Edit</a>
 				<!-- <a href="javascript:void(0);" onclick="$('#blog_action').hide();$('#display_blog').empty();$('#h_blog').val('');display_first_blog();" class="btn btn-warning">Close</a> -->
 			</div>
 
