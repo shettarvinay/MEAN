@@ -1,0 +1,6 @@
+next things to be done.
+
+1. Angular $http module to be used to get the list of blogs.
+2. filter on those listed blogs.
+3. sort them by name and date of creation.
+4. panel like structure for all the blogs listing.

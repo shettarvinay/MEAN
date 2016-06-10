@@ -1,0 +1,48 @@
+<html>
+<head>
+	<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+	<script type="text/javascript" src="/javascripts/angular.min.js"></script>
+	<script type="text/javascript" src="/javascripts/angular_controller.js"></script>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css"></link>
+	<style type="text/css">
+	.blogs{
+		/*border: 1px solid green;*/
+		margin-top: 85px;
+		border-radius:20px; 
+	}
+	</style>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="blogs_controller" class="container-fluid col-md-12" >
+	
+		<div class="col-md-12" >
+			<div class="col-md-4">
+				<input type="text" ng-model="search"></input>
+			</div>
+			<div class="col-md-4"><a href="javascript:void(0);" ng-click="order_with='name';sortOrder=!sortOrder">Sort by Title</a></div>
+			<div class="col-md-4"><a href="javascript:void(0);" ng-click="order_with='created_at';sortOrder=!sortOrder">Sort by Date</a></div>
+		</div>
+		
+		<div class="col-md-12" style="height:1200px;overflow:auto;">
+			<div class="blogs col-md-4"  style="height:200px;" ng-repeat="blog in blogs | filter : search | orderBy : order_with : sortOrder">
+			
+				<div class="col-md-12 panel panel-default">
+					
+
+					<div class="col-md-12 panel panel-default panel-heading" style="height:40px;"><h3 class="panel-title">{{blog.name}}</h3></div>
+
+					<div class="col-md-12 panel panel-default panel-body" style="height:135px;word-wrap:break-word;overflow:auto;">{{blog.description}}</div>
+
+					<div class="col-md-12 panel panel-default panel-footer" style="height:25px;">
+						<div class="col-md-6" style="height:25px;word-wrap:break-word;font-size:xx-small;">{{blog.created_at}}</div>
+						<div class="col-md-6" style="height:25px;word-wrap:break-word;font-size:xx-small;">{{blog.updated_at}}</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+		
+	</div>
+</body>
+</html>
