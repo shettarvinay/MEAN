@@ -52,6 +52,21 @@ function Update_blog(){
 
 }
 
+function delete_blog(id){
+	var _id = id;
+
+	$.ajax({
+		url : '/blogs/delete_blogs',
+		method : 'post',
+		data :{
+			_id : _id
+		}	
+	}).done(function(data){
+		$("#link_"+_id).remove();
+	});
+
+}
+
 </script>
 <script src="/javascripts/bootstrap.min.js"></script>
 
@@ -84,7 +99,12 @@ function Update_blog(){
 			<ol>
 			<%for(i=0;i<blogs.length;i++){%>
 			<li id="link_<%=blogs[i]._id%>" onclick="$('#display_blog').html($('#<%=blogs[i]._id%>').html());$('#blog_action').show();$('#h_blog').val('<%=blogs[i]._id%>');replace_update();$('#header').html('<%=blogs[i].name%>')" style="cursor:pointer;">
-			<a href="javascript:void(0);" title="Click to view blog." class="list-group-item"><%=blogs[i].name%></a>
+			<a href="javascript:void(0);" title="Click to view blog." class="list-group-item"><%=blogs[i].name%>
+
+			<span onclick="delete_blog('<%=blogs[i]._id%>');" style="color:blue;" title="Delete this blog">X</span>
+
+			</a>
+
 			<div id="<%=blogs[i]._id%>" style="display:none;">
 			<%=blogs[i].description%>
 			</div>

@@ -57,6 +57,12 @@ router.get('/blogs_json',function(req,res){
 	})
 })
 
+router.post('/delete_blogs',function(req,res){
+	Blog.remove({_id : req.body._id},function(err,docs){
+		res.send('OK');
+	});
+});
+
 router.get('/',function(req,res){
 	Blog.find({},function(err,docs){
 		res.render('all_blogs',{

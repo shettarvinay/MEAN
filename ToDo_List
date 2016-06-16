@@ -4,3 +4,12 @@ next things to be done.
 2. filter on those listed blogs.-->Done
 3. sort them by name and date of creation.-->Done
 4. panel like structure for all the blogs listing.-->Done
+
+
+13-06-2016
+
+1. Delete action on blog in angular page.
+2. Multiple delte action on blog in angular page.
+3. Threading in nodejs.
+4. Configuring nginx on nodejs.
+5. Increasing multiple workers on nginx.
