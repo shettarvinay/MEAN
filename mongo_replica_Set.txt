@@ -1,0 +1,11 @@
+mongod replica set steps
+
+1. mongod --port 27017 --dbpath /srv/mongodb/db0 --replSet rs0
+2. mongod --port 27018 --dbpath /srv/mongodb/db1 --replSet rs0
+3. mongod --port 27019 --dbpath /srv/mongodb/db2 --replSet rs0
+
+4. mongo
+
+from 4 do rs.initiate()
+
+5. rs.add("host:port"), check from rs.config() to get the host name

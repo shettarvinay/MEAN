@@ -1,0 +1,21 @@
+nginx commands
+
+nginx -s start
+nginx -s stop
+nginx -s restart
+
+nginx -s signal
+
+Where signal may be one of the following: 
+stop — fast shutdown
+quit — graceful shutdown
+reload — reloading the configuration file
+reopen — reopening the log files
+
+
+ps aux | grep "process name"
+sudo netstat -nlp | grep "process_name or port"
+
+sudo service nginx start
+sudo service nginx stop
+sudo service nginx restart

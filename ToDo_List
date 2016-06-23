@@ -8,8 +8,19 @@ next things to be done.
 
 13-06-2016
 
-1. Delete action on blog in angular page.
+1. Delete action on blog in angular page.-->done
 2. Multiple delte action on blog in angular page.
-3. Threading in nodejs.
-4. Configuring nginx on nodejs.
-5. Increasing multiple workers on nginx.
+3. Threading in nodejs-->done
+4. Configuring nginx on nodejs.-->done
+5. Increasing multiple workers on nginx.-->done
+6. acts_as_authenticated in nodejs, i.e, passort for user login and logout functionality.
+
+Authentication performed via this blog
+https://www.ctl.io/developers/blog/post/build-user-authentication-with-node-js-express-passport-and-orchestrate
+
+nginx:
+1. set as reverse proxy
+2. 1024 connections per core of cpu
+3. 4 worker cores
+4. round robin load balancer
+5. writing server with nginx

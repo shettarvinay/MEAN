@@ -3,11 +3,19 @@ var path = require('path');
 var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+var bodyParser = require('body-parser'),
+methodOverride = require('method-override'),
+session = require('express-session'),
+passport = require('passport'),
+LocalStrategy = require('passport-local'),
+FacebookStrategy = require('passport-facebook');
+
+
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var blogs = require('./routes/blog')
+var blogs = require('./routes/blog');
+var authenticate = require('./routes/authenticate');
 
 var app = express();
 var mongoose = require('mongoose');
@@ -24,10 +32,32 @@ app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(methodOverride('X-HTTP-Method-Override'));
+app.use(session({secret: 'supernova', saveUninitialized: true, resave: true}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Session-persisted message middleware
+app.use(function(req, res, next){
+  var err = req.session.error,
+      msg = req.session.notice,
+      success = req.session.success;
+
+  delete req.session.error;
+  delete req.session.success;
+  delete req.session.notice;
+
+  if (err) res.locals.error = err;
+  if (msg) res.locals.notice = msg;
+  if (success) res.locals.success = success;
+
+  next();
+});
+
 app.use('/', blogs);
 app.use('/users', users);
 app.use('/blogs', blogs);
-
+app.use('/authenticate',authenticate);
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
@@ -35,21 +65,7 @@ app.use(function(req, res, next) {
     next(err);
 });
 
-
-// var MongoClient = require('mongodb').MongoClient
-//   , assert = require('assert');
- 
-// // Connection URL 
-// var url = 'mongodb://localhost:27017/myApp';
-// // Use connect method to connect to the Server 
-// MongoClient.connect(url, function(err, db) {
-//   assert.equal(null, err);
-//   console.log("Connected correctly to server");
- 
-//   db.close();
-// });
-
-/// error handlers
+// console.log(">>>>>>>>>>"+app.get('port'));
 
 // development error handler
 // will print stacktrace

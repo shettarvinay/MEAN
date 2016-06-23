@@ -27,7 +27,7 @@ router.post('/create_blog', function(req, res) {
 });
 
 router.get('/new_blog',function(req,res){
-
+	console.log("pppppppppppppppport is "+express().get('port'));
 	res.render('blog_new');
 });
 
@@ -69,7 +69,12 @@ router.get('/',function(req,res){
 			blogs : docs
 		})
 	})
+	  // res.render('main_layout', {user: req.user});
 })
+
+router.get('/signin', function(req, res){
+  res.render('sign_in');
+});
 
 router.put('/edit/:_id',function(req,res){
 	console.log("This is id sent")
