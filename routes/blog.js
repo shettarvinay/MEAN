@@ -106,5 +106,41 @@ router.post('/update_blog',function(req,res){
 	});
 });
 
+router.get('/get_stats',function(req,res){
+	Blog.aggregate([
+			{
+				$project :  {
+								month_list: { $month: "$created_at" },
+					            day_list: { $dayOfMonth: "$created_at" },
+					            hour_list: { $hour: "$created_at" },
+					            minutes_list: { $minute: "$created_at" }
+				}
+			}
+			// ,{
+			// 	$group : {
+			// 		month : "$month_list",
+			// 		day : "$day_list",
+			// 		hour : "$hour_list",
+			// 		min : "$minutes_list",
+			// 		total_blogs : {$sum : 1}
+			// 	}
+			// },
+			// {
+			// 	$sort : {
+			// 		total_blogs : 1
+			// 	}
+			// }
+		],function(err,doc){
+
+			console.log(err);
+			console.log(">>>>>>>.")
+			console.log(doc)
+
+		res.render('stat_page',{
+			stats : doc
+		})
+	});
+});
+
 module.exports = router;
 

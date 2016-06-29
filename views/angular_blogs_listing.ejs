@@ -16,11 +16,18 @@
 	<div ng-controller="blogs_controller" class="container-fluid col-md-12" >
 	
 		<div class="col-md-12 panel panel-default" >
-			<div class="col-md-3">
+			<div class="col-md-2">
 				<input type="text" ng-model="search"></input>
 			</div>
-			<div class="col-md-3"><a href="javascript:void(0);" ng-click="order_with='name';sortOrder=!sortOrder" class="btn btn-default">Sort by Title</a></div>
-			<div class="col-md-3"><a class="btn btn-default" href="javascript:void(0);" ng-click="order_with='created_at';sortOrder=!sortOrder">Sort by Date</a></div>
+
+			<div class="col-md-2"><a href="javascript:void(0);" ng-click="order_with='name';sortOrder=!sortOrder" class="btn btn-default">Sort by Title</a></div>
+
+			<div class="col-md-2"><a class="btn btn-default" href="javascript:void(0);" ng-click="order_with='created_at';sortOrder=!sortOrder">Sort by Date</a></div>
+
+			<div class="col-md-3">
+				<a href="/blogs/get_stats" class="btn btn-info">Blog stats</a>
+			</div>
+
 			<div class="col-md-3">
 				<a href="/blogs/new_blog" class="btn btn-info">New Blog</a>
 			</div>
