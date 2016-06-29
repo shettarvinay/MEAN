@@ -19,8 +19,23 @@ Authentication performed via this blog
 https://www.ctl.io/developers/blog/post/build-user-authentication-with-node-js-express-passport-and-orchestrate
 
 nginx:
-1. set as reverse proxy
-2. 1024 connections per core of cpu
-3. 4 worker cores
-4. round robin load balancer
-5. writing server with nginx
+1. set as reverse proxy---done
+2. 1024 connections per core of cpu---done
+3. 4 worker cores--done
+4. round robin load balancer--done
+5. writing server with nginx--done
+
+Mongodb
+1. replica set addition
+2. sharding
+3. implementing group by , sum by, all aggregate funcitons, this will be major focus area in mastek. Perfect ont this.
+
+
+Number of blogs, At time:::
+
+$sum--> to keep the count of blogs done at that time (min)
+$sort--> to sort ascending or decending
+$group --> by min
+$project --> to change variable names
+
+Display in the table format, later i can use graph projection with jquery
