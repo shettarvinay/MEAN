@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="/stylesheets/bootstrap.min.css"/>
+<div class="container">
+<table class="table table-bordered table-hover table-striped">
+ <thead class="thead-inverse">
+	<th class="thead">Month</th>
+	<th>Day</th>
+	<th>Hour</th>
+	<th>At min(s)</th>
+	<th>Total blogs</th>
+	</thead>
+<%for(i=0;i<stats.length;i++){%>
+<tr>
+<td><%=stats[i]._id.month%></td>
+<td><%=stats[i]._id.day%></td>
+<td><%=stats[i]._id.hour%></td>
+<td><%=stats[i].min%></td>
+<td><%=stats[i].total_blogs%></td>
+</tr>
+<%}%>
+</table>
+</div>

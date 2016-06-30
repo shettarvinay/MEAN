@@ -116,20 +116,21 @@ router.get('/get_stats',function(req,res){
 					            minutes_list: { $minute: "$created_at" }
 				}
 			}
-			// ,{
-			// 	$group : {
-			// 		month : "$month_list",
-			// 		day : "$day_list",
-			// 		hour : "$hour_list",
-			// 		min : "$minutes_list",
-			// 		total_blogs : {$sum : 1}
-			// 	}
-			// },
-			// {
-			// 	$sort : {
-			// 		total_blogs : 1
-			// 	}
-			// }
+			,{
+				$group : {
+					_id:{month:"$month_list",day:"$day_list",hour:"$hour_list"},//,},
+					//month : {$addToSet:"$month_list"},
+					day : {$addToSet:"$day_list"},
+					hour :{$addToSet:"$hour_list"},
+					min :{$addToSet:"$minutes_list"},
+					total_blogs : {$sum : 1}
+				}
+			},
+			{
+				$sort : {
+					total_blogs : 1
+				}
+			}
 		],function(err,doc){
 
 			console.log(err);
