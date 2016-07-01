@@ -1,6 +1,25 @@
 <link rel="stylesheet" href="/stylesheets/bootstrap.min.css"/>
+  <script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+  <script src="/javascripts/bootstrap.min.js"></script>
 
-
+  <nav class="navbar navbar-default">
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+            <li><a class="navbar-brand" href="#">BLOG</a></li>
+             <li><a href="/blogs/new_blog" >New Blog</a></li>
+                <li>  <a href="/blogs/angular" >View Blogs Angular</a></li>
+                <li><a href="/blogs" >View Blogs</a></li>
+                 <li class="active"><a href="/blogs/get_stats">Blog Stats</a></li>
+                <li><a href="#">Blog Graph</a></li>
+              <!-- <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  
+                </ul>
+              </li> -->
+            </ul>
+        </div>
+    </nav>
 
 
 <div class="container" >
@@ -13,7 +32,7 @@
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Description</label>
-    <textarea name="blog_description"  class="form-control" id="exampleInputPassword1" placeholder="Blog description" rows="20"></textarea>
+    <textarea name="blog_description"  class="form-control" id="exampleInputPassword1" placeholder="Blog description" rows="15"></textarea>
   </div>
   <input type="submit" value="Blog" class="btn btn-success"></input>
   <a href="/blogs/list_all_blogs" class="btn btn-info">Cancel</a>

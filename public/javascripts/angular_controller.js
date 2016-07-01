@@ -15,3 +15,10 @@ myApp.controller('blogs_controller',function($scope,$http){
     };
 
 });
+
+myApp.controller('stats_controller',function($scope,$http){
+    $scope.sortOrder='false';
+    $http.get('/blogs/get_stats_json').then(function(response) {
+        $scope.stats = response.data.stats;
+    });
+});

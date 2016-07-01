@@ -4,6 +4,7 @@
 	<script type="text/javascript" src="/javascripts/angular.min.js"></script>
 	<script type="text/javascript" src="/javascripts/angular_controller.js"></script>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css"></link>
+		<script src="/javascripts/bootstrap.min.js"></script>
 	<style type="text/css">
 	.blogs{
 		/*border: 1px solid green;*/
@@ -13,6 +14,26 @@
 	</style>
 </head>
 <body ng-app="myApp" style="background-color:#cecece;background-image:url(/images/sky.jpg);background-repeat:no-repeat;">
+
+	<nav class="navbar navbar-default">
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			       <ul class="nav navbar-nav">
+             		<li><a class="navbar-brand" href="#">BLOG</a></li>
+	              <li><a href="/blogs/new_blog" >New Blog</a></li>
+	              <li>  <a href="/blogs/angular" >View Blogs Angular</a></li>
+	              <li><a href="/blogs" >View Blogs</a></li>
+	               <li class="active"><a href="/blogs/get_stats">Blog Stats</a></li>
+	              <li><a href="#">Blog Graph</a></li>
+              <!-- <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  
+                </ul>
+              </li> -->
+            </ul>
+		    </div>
+		</nav>
+
 	<div ng-controller="blogs_controller" class="container-fluid col-md-12" >
 	
 		<div class="col-md-12 panel panel-default" >

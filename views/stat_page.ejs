@@ -1,21 +1,51 @@
-<link rel="stylesheet" href="/stylesheets/bootstrap.min.css"/>
-<div class="container">
-<table class="table table-bordered table-hover table-striped">
- <thead class="thead-inverse">
-	<th class="thead">Month</th>
-	<th>Day</th>
-	<th>Hour</th>
-	<th>At min(s)</th>
-	<th>Total blogs</th>
-	</thead>
-<%for(i=0;i<stats.length;i++){%>
-<tr>
-<td><%=stats[i]._id.month%></td>
-<td><%=stats[i]._id.day%></td>
-<td><%=stats[i]._id.hour%></td>
-<td><%=stats[i].min%></td>
-<td><%=stats[i].total_blogs%></td>
-</tr>
-<%}%>
-</table>
-</div>
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Blogs Stat</title>
+		<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css"></link>
+		<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+		<script type="text/javascript" src="/javascripts/angular.min.js"></script>
+		<script type="text/javascript" src="/javascripts/angular_controller.js"></script>
+		<script src="/javascripts/bootstrap.min.js"></script>
+	</head>
+	<body ng-app="myApp">
+
+		<nav class="navbar navbar-default">
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			       <ul class="nav navbar-nav">
+			       <li><a class="navbar-brand" href="#">BLOG</a></li>
+              <li><a href="/blogs/new_blog" >New Blog</a></li>
+	              <li>  <a href="/blogs/angular" >View Blogs Angular</a></li>
+	              <li><a href="/blogs" >View Blogs</a></li>
+	               <li class="active"><a href="/blogs/get_stats">Blog Stats</a></li>
+	              <li><a href="#">Blog Graph</a></li>
+              <!-- <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  
+                </ul>
+              </li> -->
+            </ul>
+		    </div>
+		</nav>
+
+		<div class="container col-md-10 col-md-offset-1" ng-controller="stats_controller" >
+			<table class="table table-bordered table-hover table-striped">
+			 <thead class="thead-inverse">
+				<th class="thead" ng-click="order_with='month';sortOrder=!sortOrder"><a href="javascript:void(0)">Month</a></th>
+				<th ng-click="order_with='day';sortOrder=!sortOrder"><a href="javascript:void(0)">Day</a></th>
+				<th ng-click="order_with='hour';sortOrder=!sortOrder"><a href="javascript:void(0)">Hour</a></th>
+				<th>At min(s)</th>
+				<th ng-click="order_with='total_blogs';sortOrder=!sortOrder"><a href="javascript:void(0)">Total blogs</a></th>
+				</thead>
+				<tr ng-repeat="stat in stats | orderBy : order_with : sortOrder">
+				<td>{{stat._id.month}}</td>
+				<td>{{stat._id.day}}</td>
+				<td>{{stat._id.hour}}</td>
+				<td>{{stat.min}}</td>
+				<td>{{stat.total_blogs}}</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

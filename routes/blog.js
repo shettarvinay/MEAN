@@ -107,6 +107,10 @@ router.post('/update_blog',function(req,res){
 });
 
 router.get('/get_stats',function(req,res){
+	res.render('stat_page.ejs');
+});
+
+router.get('/get_stats_json',function(req,res){
 	Blog.aggregate([
 			{
 				$project :  {
@@ -137,7 +141,7 @@ router.get('/get_stats',function(req,res){
 			console.log(">>>>>>>.")
 			console.log(doc)
 
-		res.render('stat_page',{
+		res.json({
 			stats : doc
 		})
 	});
