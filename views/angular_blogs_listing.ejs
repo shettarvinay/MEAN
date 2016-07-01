@@ -8,59 +8,59 @@
 	<style type="text/css">
 	.blogs{
 		/*border: 1px solid green;*/
-		margin-top: 85px;
+		margin-top: 10px;
 		border-radius:20px; 
 	}
 	</style>
 </head>
-<body ng-app="myApp" style="background-color:#cecece;background-image:url(/images/sky.jpg);background-repeat:no-repeat;">
+<body ng-app="myApp" style="background-image:url(/images/sky.jpg);background-repeat:no-repeat;">
 
-	<nav class="navbar navbar-default">
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			       <ul class="nav navbar-nav">
-             		<li><a class="navbar-brand" href="/blogs">BLOG</a></li>
-	              <li><a href="/blogs/new_blog" >New Blog</a></li>
-	              <li>  <a href="/blogs/angular" >View Blogs Angular</a></li>
-	              <li><a href="/blogs" >View Blogs</a></li>
-	               <li class="active"><a href="/blogs/get_stats">Blog Stats</a></li>
-	              <li><a href="#">Blog Graph</a></li>
-              <!-- <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  
-                </ul>
-              </li> -->
+	<nav class="navbar navbar-default navbar-inverse" >
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		       <ul class="nav navbar-nav">
+         		<li><a class="navbar-brand" href="/blogs">BLOG</a></li>
+              <li><a href="/blogs/new_blog" >New Blog</a></li>
+              <li>  <a href="/blogs/angular" >View Blogs Angular</a></li>
+              <li><a href="/blogs" >View Blogs</a></li>
+               <li class="active"><a href="/blogs/get_stats">Blog Stats</a></li>
+              <li><a href="#">Blog Graph</a></li>
+          <!-- <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              
             </ul>
-		    </div>
-		</nav>
+          </li> -->
+        </ul>
+	    </div>
+	</nav>
 
-	<div ng-controller="blogs_controller" class="container-fluid col-md-12" >
+	<div ng-controller="blogs_controller" class="container col-md-12 " >
 	
-		<div class="col-md-12 panel panel-default" >
+		<div class="col-md-12 " >
 			<div class="col-md-2">
-				<input type="text" ng-model="search"></input>
+				<input type="text" ng-model="search" placeholder="Type Search"></input>
 			</div>
 
 			<div class="col-md-2"><a href="javascript:void(0);" ng-click="order_with='name';sortOrder=!sortOrder" class="btn btn-default">Sort by Title</a></div>
 
 			<div class="col-md-2"><a class="btn btn-default" href="javascript:void(0);" ng-click="order_with='created_at';sortOrder=!sortOrder">Sort by Date</a></div>
 
-			<div class="col-md-3">
+			<!-- <div class="col-md-3">
 				<a href="/blogs/get_stats" class="btn btn-info">Blog stats</a>
 			</div>
 
 			<div class="col-md-3">
 				<a href="/blogs/new_blog" class="btn btn-info">New Blog</a>
-			</div>
+			</div> -->
 		</div>
 		
-		<div class="col-md-12" style="height:1200px;overflow:auto;">
+		<div class="col-md-12 " style="height:450px;overflow:auto;">
 			<div class="blogs col-md-4"  style="height:200px;" ng-repeat="blog in blogs | filter : search | orderBy : order_with : sortOrder" id="blog_{{blog._id}}">
 			
 				<div class="col-md-12 panel panel-default">
 					
 
-					<div class="col-md-12 panel panel-default panel-heading" style="height:40px;">
+					<div class="col-md-12 panel panel-default panel-heading" style="height:30px;">
 						<h3 class="panel-title">{{blog.name}}</h3>
 						<a href="javascript:void(0)" title="Delete this blog." style="float:right;margin-top:-18px;" ng-click="delete_blog(blog._id);" y="{{blog._id}}">X</a>
 					</div>

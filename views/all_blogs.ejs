@@ -71,10 +71,10 @@ function delete_blog(id){
 
 <style>
 .opa{
-	opacity: .75;
+	/*opacity: .75;*/
 }
 </style>
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-default navbar-inverse">
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			       <ul class="nav navbar-nav">
 			       <li><a class="navbar-brand" href="/blogs">BLOG</a></li>
@@ -92,21 +92,13 @@ function delete_blog(id){
             </ul>
 		    </div>
 		</nav>
-<div class="container-fluid" style="background-color:#cecece;background-image:url(/images/sky.jpg);background-repeat:no-repeat;" >
+<div class="container-fluid" style="background-image:url(/images/sky.jpg);background-repeat:no-repeat;" >
 
-	<div class="col-md-12 opa" style="height:30px;background-color:#e3e3e3;top:5px;">
-	</div>
-
-	<div class="col-md-12 opa" style="height:80px;background-color:#f4f4f4;top:15px;">
-		<div class="col-md-1" style="height:50px;top:20px;">
-			<a href="/blogs/new_blog" class="btn btn-info">New Blog</a>
+	<div class="col-md-12 opa" style="height:50px;background-color:#f4f4f4;top:5px;">
+	<h4><em  id="header" class="text-capitalize"></em></h4>
+		<!-- <div class="col-md-9 col-md-offset-2" style="height:30px;top:10px;"> -->
+			
 		</div>
-		<div class="col-md-9 col-md-offset-2" style="height:60px;top:10px;">
-			<h2><em  id="header"></em></h2>
-		</div>
-	</div>
-
-	<div class="col-md-12 opa" style="height:30px;">
 	</div>
 
 	<div class="col-md-12 " style="height:430px;">
@@ -115,7 +107,7 @@ function delete_blog(id){
 			<ol>
 			<%for(i=0;i<blogs.length;i++){%>
 			<li id="link_<%=blogs[i]._id%>" onclick="$('#display_blog').html($('#<%=blogs[i]._id%>').html());$('#blog_action').show();$('#h_blog').val('<%=blogs[i]._id%>');replace_update();$('#header').html('<%=blogs[i].name%>')" style="cursor:pointer;">
-			<a href="javascript:void(0);" title="Click to view blog." class="list-group-item"><%=blogs[i].name%>
+			<a href="javascript:void(0);" title="Click to view blog." class="list-group-item text-capitalize"><%=blogs[i].name%>
 
 			<span onclick="delete_blog('<%=blogs[i]._id%>');" style="color:blue;" title="Delete this blog">X</span>
 
@@ -145,8 +137,8 @@ function delete_blog(id){
 
 	</div>
 
-	<div class="col-md-12 opa" style="height:50px;top:20px;background-color:#eff7f4;">
-	</div>
+<!-- 	<div class="col-md-12 opa" style="height:50px;top:20px;background-color:#eff7f4;">
+	</div> -->
 
 </div>
 
