@@ -137,10 +137,6 @@ router.get('/get_stats_json',function(req,res){
 			}
 		],function(err,doc){
 
-			console.log(err);
-			console.log(">>>>>>>.")
-			console.log(doc)
-
 		res.json({
 			stats : doc
 		})
