@@ -2,10 +2,11 @@
 var express = require('express');
 var router = express.Router();
 var Blog = require('../model/Blog.js');
-
+var loadtest = require('loadtest');
 
 /* GET users listing. */
 router.post('/create_blog', function(req, res) {
+	console.log(req.params)
 	try{
 		var blog = new Blog({
 			name :  req.body.blog,
@@ -18,22 +19,46 @@ router.post('/create_blog', function(req, res) {
 			if(err)
 				console.log(err)
 
-			res.render('blog',{
-				blog : blog
-			})
+			// res.render('blog',{
+			// 	blog : blog
+			// })
+			res.redirect('/angular');
 		})
 	}catch(e){
 	}
 });
 
+// router.get('/loadtest',function(req,res){
+// 	var options = {
+// 		url: 'http://localhost:3000/blogs/create_blog',
+// 		concurrent: 1,
+// 		params : 'htllo',
+// 		method: 'POST',
+// 		body:'fsfhlsfhls',
+// 		requestPerSecond:1,
+// 		maxSeconds:1,
+// 	};
+
+
+// 	loadtest.loadTest(options, function(error, results)
+// 	{
+// 		if (error)
+// 		{
+// 			console.log('Got an error: %s', error);
+// 		}
+// 		console.log(results);
+// 			res.send(200)
+// 	});
+// })
+
 router.get('/new_blog',function(req,res){
 	console.log("pppppppppppppppport is "+express().get('port'));
-	res.render('blog_new');
+	res.render('blog_new',{active_tab : 'new_blog'});
 });
 
 router.get('/angular',function(req,res){
 
-	res.render('angular_blogs_listing');
+	res.render('angular_blogs_listing',{active_tab : 'ang_blog'});
 });
 
 router.get('/blue_print',function(req,res){
@@ -44,7 +69,8 @@ router.get('/blue_print',function(req,res){
 router.get('/list_all_blogs',function(req,res){
 	Blog.find({},function(err,docs){
 		res.render('all_blogs',{
-			blogs : docs
+			blogs : docs,
+			active_tab : 'view_blog'
 		})
 	})
 })
@@ -66,7 +92,8 @@ router.post('/delete_blogs',function(req,res){
 router.get('/',function(req,res){
 	Blog.find({},function(err,docs){
 		res.render('all_blogs',{
-			blogs : docs
+			blogs : docs,
+			active_tab : 'view_blog'
 		})
 	})
 	  // res.render('main_layout', {user: req.user});
@@ -107,7 +134,7 @@ router.post('/update_blog',function(req,res){
 });
 
 router.get('/get_stats',function(req,res){
-	res.render('stat_page.ejs');
+	res.render('stat_page.ejs',{active_tab : 'stats_blog'});
 });
 
 router.get('/get_stats_json',function(req,res){

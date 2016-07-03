@@ -11,22 +11,7 @@
 	<body ng-app="myApp">
 
 		<nav class="navbar navbar-default navbar-inverse">
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			       <ul class="nav navbar-nav">
-			       <li><a class="navbar-brand" href="/blogs">BLOG</a></li>
-              <li><a href="/blogs/new_blog" >New Blog</a></li>
-	              <li>  <a href="/blogs/angular" >View Blogs Angular</a></li>
-	              <li><a href="/blogs" >View Blogs</a></li>
-	               <li class="active"><a href="/blogs/get_stats">Blog Stats</a></li>
-	              <li><a href="#">Blog Graph</a></li>
-              <!-- <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  
-                </ul>
-              </li> -->
-            </ul>
-		    </div>
+			<% include /header.ejs %>
 		</nav>
 
 		<div class="container col-md-10 col-md-offset-1" ng-controller="stats_controller" >

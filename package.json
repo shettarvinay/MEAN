@@ -19,8 +19,9 @@
     "orchestrate": "^0.3.11",
     "passport": "^0.2.1",
     "passport-facebook": "^1.0.3",
-     "method-override": "^2.2.0",
-      "passport-local": "^1.0.0",
-    "express-session": "^1.8.2"
+    "method-override": "^2.2.0",
+    "passport-local": "^1.0.0",
+    "express-session": "^1.8.2",
+    "loadtest": "~1.4.3"
   }
 }
